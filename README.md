@@ -106,6 +106,19 @@ Your task is to create a RESTful quiz application with full of greenfox question
 
 Please define it with your own words. We are expecting at least 3 distinct ideas that you write here:
 
+In case of interfaces all fields are static and final. They are contracts and any class that implements a particular interface has to implement all the methods that are defined within that interface.
+
+An abstract class is almost like a regular class but it has abstract methods. It can only be extended and its instances cannot be instantiated.
+Abstract methods must be overwritten and they have to be inside an abstract class. If you have an abstract method you need to implement or override it in the subclasses that extend the superclass.
+
+Abstract classes can be used to create templates for future classes (for children), but they are also good for defining hte functionality that these child classes can apply later, unlike interfaces.
+You can't provide an implementation for an Interface. Abstract Classes are a good fit if you want to provide implementation details to your children but don't want to allow an instance of your class to be directly instantiated (which allows you to partially define a class).
+
+The use of abstract classes could be considered in the following cases:
+e.g. if we want to share code among several closely related classes.
+ or if we expect that classes that extend your abstract class have many common methods or fields or require access modifiers other than public (such as protected and private).
+  or i we want to declare non-static or non-final fields. This enables you to define methods that can access and modify the state of the object to which they belong.
+
 
 ### Analyzing URL
 Please name the parts of the URL below.
