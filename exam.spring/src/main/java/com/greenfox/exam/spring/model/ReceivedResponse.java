@@ -9,7 +9,6 @@ public class ReceivedResponse {
   List<Project> projectList;
 
   public void fillProject(List<Project> projectList){
-    this.projectList = projectList;
     projectList.add(new Project(1, "Project 1"));
     projectList.add(new Project(2, "Project 2"));
     projectList.add(new Project(3, "Project 3"));

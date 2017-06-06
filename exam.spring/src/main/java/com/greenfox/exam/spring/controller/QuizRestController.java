@@ -38,15 +38,17 @@ public class QuizRestController {
   }
 
   @PostMapping("/answers")
-  public ReceivedResponse postAnswers(@RequestBody Response response){
+  public List<Project> postAnswers(@RequestBody Response response){
     List<Answer> answers = new ArrayList<>();
+    List<Project> projectList = new ArrayList<>();
     response.setAnswers(answers);
     for (int i = 0; i < answers.size(); i++){
       if(answers.get(i).equals(answerRespository.findOne(answers.get(i).getId()))){
-      List<Project> projectList = new ArrayList<>();
       receivedResponse.fillProject(projectList);
+      } else {
+        return projectList;
       }
     }
-    return receivedResponse;
+    return projectList;
   }
 }
