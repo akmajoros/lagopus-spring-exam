@@ -42,10 +42,11 @@ public class QuizRestController {
     List<Answer> answers = new ArrayList<>();
     response.setAnswers(answers);
     for (int i = 0; i < answers.size(); i++){
-      answerRespository.save(response.getAnswers().get(i));
+      if(answers.get(i).equals(answerRespository.findOne(answers.get(i).getId()))){
+      List<Project> projectList = new ArrayList<>();
+      receivedResponse.fillProject(projectList);
+      }
     }
-    List<Project> projectList = new ArrayList<>();
-    receivedResponse.fillProject(projectList);
     return receivedResponse;
   }
 }
