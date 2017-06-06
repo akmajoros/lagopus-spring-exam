@@ -1,9 +1,6 @@
 package com.greenfox.exam.spring.controller;
 
-import com.greenfox.exam.spring.model.Answer;
-import com.greenfox.exam.spring.model.Project;
-import com.greenfox.exam.spring.model.Question;
-import com.greenfox.exam.spring.model.Response;
+import com.greenfox.exam.spring.model.*;
 import com.greenfox.exam.spring.repository.AnswerRespository;
 import com.greenfox.exam.spring.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,8 @@ public class QuizRestController {
   @Autowired
   Question question;
   @Autowired
+  ReceivedResponse receivedResponse;
+  @Autowired
   QuestionRepository questionRepository;
   @Autowired
   AnswerRespository answerRespository;
@@ -39,12 +38,14 @@ public class QuizRestController {
   }
 
   @PostMapping("/answers")
-  public String postAnswers(@RequestBody Response response){
+  public ReceivedResponse postAnswers(@RequestBody Response response){
     List<Answer> answers = new ArrayList<>();
     response.setAnswers(answers);
     for (int i = 0; i < answers.size(); i++){
-      answerRespository.save(answers.get(i));
+      answerRespository.save(response.getAnswers().get(i));
     }
-    return "You did it mate";
+    List<Project> projectList = new ArrayList<>();
+    receivedResponse.fillProject(projectList);
+    return receivedResponse;
   }
 }

@@ -6,4 +6,12 @@ public class Project {
 
   long id;
   String nameOfProject;
+
+  public Project(){
+  }
+
+  public Project(long id, String nameOfProject){
+    this.id = id;
+    this.nameOfProject = nameOfProject;
+  }
 }
