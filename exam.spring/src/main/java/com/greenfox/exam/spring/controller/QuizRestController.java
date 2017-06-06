@@ -4,6 +4,7 @@ import com.greenfox.exam.spring.model.Answer;
 import com.greenfox.exam.spring.model.Project;
 import com.greenfox.exam.spring.model.Question;
 import com.greenfox.exam.spring.model.Response;
+import com.greenfox.exam.spring.repository.AnswerRespository;
 import com.greenfox.exam.spring.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,8 @@ public class QuizRestController {
   Question question;
   @Autowired
   QuestionRepository questionRepository;
+  @Autowired
+  AnswerRespository answerRespository;
 
   @GetMapping("/questions")
   public  List<Question> giveFiveQuestions(){
@@ -40,7 +43,8 @@ public class QuizRestController {
     List<Answer> answers = new ArrayList<>();
     response.setAnswers(answers);
     for (int i = 0; i < answers.size(); i++){
-      questionRepository.save(answers.get(i));
+      answerRespository.save(answers.get(i));
     }
+    return "You did it mate";
   }
 }
