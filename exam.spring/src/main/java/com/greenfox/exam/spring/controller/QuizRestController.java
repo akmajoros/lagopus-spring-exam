@@ -24,7 +24,7 @@ public class QuizRestController {
     long id = 1;
     List<Question> quizQuestions = new ArrayList<>();
     for (int i = 1; i < 6; i++){
-      id = i;
+      id = (long) (Math.random() * 10) + 1;
       Question question = questionRepository.findOne(id);
       quizQuestions.add(question);
     }
